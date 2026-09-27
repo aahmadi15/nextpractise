@@ -25,7 +25,27 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.container {
-  text-align: center;
+.dateVal{
   margin: 0 auto;
+  margin-bottom: 10px;
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06),
+  0 8px 33px rgba(0, 0, 0, 0.08);
+  border-radius: 1rem;
+  margin:10px 10px 10px 10px;
+  border-color: #331010;
+}
+
+.container {
+ max-width: 28rem;
+  margin: 3rem auto;
+  padding: 2rem;
+  font-size: 15px;
+  text-align: left;
+ 
+  background-color: #ffffff;
+  border-radius: 1rem;
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.06),
+    0 8px 24px rgba(0, 0, 0, 0.08);
 }
