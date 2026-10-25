@@ -1,31 +1,37 @@
 "use client"
 
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 //import DatePicker from "react-datepicker";
-
+import {useRouter} from "next/navigation"
+import Resource from './ResourceSelector';
+import { navigate } from "next/dist/client/components/segment-cache/navigation";
 //const AVAILABILITY_SLOTS = ["9:00AM", "10:30AM", "01:00PM", ];
 
 export default function TimeSlotPicker (){
+  const [refreshKey, setRefreshKey] = useState(0);
     const [name, setName] = useState("");
     const [date, setDate] = useState("");
     const [time, setTime] = useState("");
 
+    let router = useRouter();
     const [confirmed, setConfirmed] = useState("");
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        
-      setDate("");
-      setTime("");
-      setName("");
+      
 
       setConfirmed({name, date, time});
         console.log(date);
                 console.log(name);
 
                         console.log(time);
-    }
 
+                        setConfirmed(true);
+                        
+          setRefreshKey(prevKey => prevKey+1);
+                        
+
+    }
     return (
 <form onSubmit={handleSubmit}
         className="max-w-md mx-auto p-6 bg-white rounded-2xl shadow-md space-y-5"
@@ -83,10 +89,12 @@ export default function TimeSlotPicker (){
       >
         Book appointment
       </button>
-      {confirmed && <div style = {{color: "green"}}>{confirmed.date}{" "}
+      {<div style = {{color: "green"}}>{confirmed.date}{" "}
         {confirmed.name} {" "} {confirmed.time}
       </div>
-}
+       
+    }
+     {confirmed && <Resource {...confirmed} /> }
     </form>
 
         /*<form onSubmit={handleSubmit}>
